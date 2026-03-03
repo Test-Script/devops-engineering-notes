@@ -231,6 +231,8 @@ Now Kubernetes controls permissions.
 
 Example 1: Dev Team — Namespace Restricted Access
 
+![Cluster Admin ClusterRoleBinding](image.png)
+
 Create namespace:
 
     kubectl create namespace dev
