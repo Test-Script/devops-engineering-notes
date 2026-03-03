@@ -286,6 +286,17 @@ aks-qa-team
 
 ## Example 3: Platform Admin — Cluster Wide
 
+Here I would like to update the practical scenario.
+
+ClusterAdminRole has to be give to ***aks-platform-admin**.
+
+This Group user will only be able to control the Role creation, and RoleBinding Activity for other groups i.e. 
+
+- aks-dev-team
+- aks-qa-team
+- aks-platform-admin
+- aks-security-readonly
+
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -299,6 +310,31 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 Full control.
+
+========================
+Hands-One Output
+========================
+
+## aks-cluster-admin-binding-aad : This this binding object in Cluster.
+
+dev-user [ ~ ]$ kubectl describe clusterrolebinding aks-cluster-admin-binding-aad
+Name:         aks-cluster-admin-binding-aad
+Labels:       addonmanager.kubernetes.io/mode=Reconcile
+              kubernetes.io/cluster-service=true
+Annotations:  <none>
+Role:
+  Kind:  ClusterRole
+  Name:  cluster-admin
+Subjects:
+  Kind   Name                                  Namespace
+  ----   ----                                  ---------
+  Group  bfb55ed7-fc0c-44dc-84b9-e263cbe30c26  
+  Group  74166081-9146-4f9e-ba77-8e82aa3906dc 
+
+========================
+
+aks-dev-team : bfb55ed7-fc0c-44dc-84b9-e263cbe30c26
+aks-platform-admin : 74166081-9146-4f9e-ba77-8e82aa3906dc
 
 ## Example 4: Security Team — View Only Cluster Wide
 
