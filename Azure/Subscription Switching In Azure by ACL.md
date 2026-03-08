@@ -56,3 +56,8 @@ az account list --output table
 
 az account set --subscription "<TEST_SUBSCRIPTION_ID>"
 az account show --output table
+
+============================================================================================================
+
+tejas [ ~ ]$ az ad group show --group aks-dev-team --query id -o tsv
+bfb55ed7-fc0c-44dc-84b9-e263cbe30c26
