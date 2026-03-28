@@ -26,6 +26,22 @@ QoS Classes as below,
 BestEffort  →  Burstable  →  Guaranteed
 (evicted first)              (evicted last)
 
+====================================================================================================
+                            **Some behavior is independent of QoS class**
+====================================================================================================
+
+Any Container exceeding a resource limit will be killed and restarted by the kubelet without affecting other Containers in that Pod.
+
+If a Container exceeds its resource request and the node it runs on faces resource pressure, the Pod it is in becomes a candidate for eviction. If this occurs, all Containers in the Pod will be terminated. Kubernetes may create a replacement Pod, usually on a different node.
+
+The resource request of a Pod is equal to the sum of the resource requests of its component Containers, and the resource limit of a Pod is equal to the sum of the resource limits of its component Containers.
+
+The kube-scheduler does not consider QoS class when selecting which Pods to preempt. Preemption can occur when a cluster does not have enough resources to run all the Pods you defined.
+
+The QoS class is determined when the Pod is created and remains unchanged for the lifetime of the Pod. If you later attempt an in-place resize that would result in a different QoS class, the resize is rejected by admission.
+
+====================================================================================================
+
 ### CFS (Linux Completely Fair Scheduler) Perspective
 
 This is where it gets deeper. When no CPU limit is set, **no CFS quota is configured** for the container's cgroup.
