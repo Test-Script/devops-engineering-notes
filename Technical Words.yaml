@@ -1,0 +1,11 @@
+- Throttling: >
+	Throttling is a technique that cloud APIs use to limit the number of requests that can be made in a specific period of time. Throttling ensures that the API remains available and responsive to all users, and prevents any single user from consuming too many resources.
+  
+	Throttling can be implemented in various ways, such as by limiting the number of requests per second, per minute, or per hour. It can also be based on the user's IP address or API key. Throttling is an important aspect of API management and helps to maintain the performance and reliability of cloud services.
+	You can experience throttling in several ways. One common way is by using HTTP status codes. For example, when a user exceeds the allowed number of requests, the API might return a 429 Too Many Requests status code. This response indicates that the user issued too many requests in a specific period of time and should slow down.
+
+	In addition to status codes, some APIs might also provide more information in the response headers or body. For example, they might use the Retry-After header to indicate how long the user should wait before making another request.
+
+	You need to be aware of the throttling limits of the APIs that you use, and know how to handle throttling errors appropriately in your apps. Throttling helps you ensure that your apps remain responsive and reliable, even when the API is under heavy load.
+
+	For more detailed information on throttling in Microsoft cloud services, see: https://learn.microsoft.com/en-us/microsoft-cloud/dev/dev-proxy/concepts/what-is-throttling
